@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <input type="hidden" name="bno" value="${board.bno}" id="bno">
+<input type="hidden" name="page" value="${param.page}" id="page">
+<input type="hidden" name="type" value="${param.type}" id="type">
+<input type="hidden" name="keyword" value="${param.keyword}" id="keyword">
 <%-- 
 <input type="hidden" name="title" value="${board.title}">
 <input type="hidden" name="content" value="${board.content}">
@@ -45,7 +48,10 @@
 <script>
 	$(function(){
 		let getForm = $('#getForm'); 
+		
 		$('#getForm .list').on('click', function(e) { 
+			/* 수정 필요 */
+			
 			getForm.attr("action","list");
 			getForm.attr("method", "get");
 			getForm.submit();
