@@ -14,7 +14,31 @@
 		<div class="row gx-4 gx-lg-5 justify-content-center mb-5">
 			<div class="col-lg-6">
 				<form id="contactForm" data-sb-form-api-token="API_TOKEN">
-					<!-- Name input-->
+					<!-- id input-->
+					<div class="form-floating mb-3">
+						<input class="form-control" id="name" type="text"
+							placeholder="Enter your name..." data-sb-validations="required" />
+						<label for="name">아이디</label>
+						<div class="invalid-feedback" data-sb-feedback="name:required">A
+							name is required.</div>
+					</div>
+					<!-- password input-->
+					<div class="form-floating mb-3">
+						<input class="form-control" id="name" type="text"
+							placeholder="Enter your name..." data-sb-validations="required" />
+						<label for="name">비밀번호</label>
+						<div class="invalid-feedback" data-sb-feedback="name:required">A
+							name is required.</div>
+					</div>
+					<!-- password check input-->
+					<div class="form-floating mb-3">
+						<input class="form-control" id="name" type="text"
+							placeholder="Enter your name..." data-sb-validations="required" />
+						<label for="name">비밀번호 재확인</label>
+						<div class="invalid-feedback" data-sb-feedback="name:required">A
+							name is required.</div>
+					</div>
+					<!-- name input-->
 					<div class="form-floating mb-3">
 						<input class="form-control" id="name" type="text"
 							placeholder="Enter your name..." data-sb-validations="required" />
@@ -40,15 +64,7 @@
 						<div class="invalid-feedback" data-sb-feedback="phone:required">A
 							phone number is required.</div>
 					</div>
-					<!-- Message input-->
-					<div class="form-floating mb-3">
-						<textarea class="form-control" id="message" type="text"
-							placeholder="Enter your message here..." style="height: 10rem"
-							data-sb-validations="required"></textarea>
-						<label for="message"></label>
-						<div class="invalid-feedback" data-sb-feedback="message:required">A
-							message is required.</div>
-					</div>
+					
 					<!-- Submit success message-->
 					<!---->
 					<!-- This is what your users will see when the form-->
@@ -71,15 +87,16 @@
 					<!-- Submit Button-->
 					<div class="d-grid">
 						<button class="btn btn-primary btn-xl disabled" id="submitButton"
-							type="submit">Submit</button>
+							type="submit">가입하기</button>
 					</div>
 				</form>
 			</div>
 		</div>
 		<div class="row gx-4 gx-lg-5 justify-content-center">
 			<div class="col-lg-4 text-center mb-5 mb-lg-0">
+			<h6>문의사항은 아래의 연락처로 부탁드립니다.</h6>
 				<i class="bi-phone fs-2 mb-3 text-muted"></i>
-				<div>+1 (555) 123-4567</div>
+				<div>010 - 0000 - 0000</div>
 			</div>
 		</div>
 	</div>
