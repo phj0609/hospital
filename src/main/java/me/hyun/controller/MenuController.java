@@ -12,17 +12,5 @@ public class MenuController {
 	public String info() {
 		return "menu/info";
 	}
-
-	@GetMapping("/login")
-	public String login() {
-		return "menu/login";
-	}
-
-	@GetMapping("/signUp")
-	public String join() {
-		return "menu/signUp";
-	}
-	
-	
 	
 }

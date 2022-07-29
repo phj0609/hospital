@@ -40,8 +40,8 @@
                         <li class="nav-item"><a class="nav-link" href="#services">진료예약</a></li>
                         <li class="nav-item"><a class="nav-link" href="#portfolio">예약확인</a></li>
                         <li class="nav-item"><a class="nav-link" href="${contextPath}/board/list">게시판</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${contextPath}/menu/login">로그인</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${contextPath}/menu/signUp">회원가입</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${contextPath}/menu/account/login">로그인</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${contextPath}/menu/account/signUp">회원가입</a></li>
                     </ul>
                 </div>
             </div>

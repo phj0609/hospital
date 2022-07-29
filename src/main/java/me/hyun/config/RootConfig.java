@@ -5,15 +5,20 @@ import javax.sql.DataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 @MapperScan("me.hyun.mapper")
+@ComponentScan("me.hyun")
 public class RootConfig {
 
 	@Bean
@@ -38,4 +43,16 @@ public class RootConfig {
 		return new DataSourceTransactionManager(dataSource());
 	}
 	
+	@Bean
+	public MessageSource messageSource() {
+		ReloadableResourceBundleMessageSource source = new ReloadableResourceBundleMessageSource();
+		source.setBasenames("classpath:/message/message","classpath:/message/errors"); // /message/message.properties
+		source.setDefaultEncoding("utf-8");
+		return source;
+	}
+	
+	@Bean
+	public SessionLocaleResolver localeResolver() {
+		return new SessionLocaleResolver();
+	}
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../layout/header.jsp"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ include file="../../layout/header.jsp"%>
 <section class="page-section" id="signup">
 	<div class="container px-4 px-lg-5">
 		<div class="row gx-4 gx-lg-5 justify-content-center">
@@ -13,56 +14,41 @@
 		</div>
 		<div class="row gx-4 gx-lg-5 justify-content-center mb-5">
 			<div class="col-lg-6">
-				<form id="contactForm" data-sb-form-api-token="API_TOKEN">
-					<!-- id input-->
+				<form id="contactForm" method="post" modelAttribute="member">
+					<!-- 아이디 -->
 					<div class="form-floating mb-3">
-						<input class="form-control" id="name" type="text"
-							placeholder="Enter your name..." data-sb-validations="required" />
+						<input class="form-control" id="userId" type="text"
+							placeholder="아이디를 입력하세요"/>
 						<label for="name">아이디</label>
-						<div class="invalid-feedback" data-sb-feedback="name:required">A
-							name is required.</div>
 					</div>
-					<!-- password input-->
+					<!-- 비밀번호 -->
 					<div class="form-floating mb-3">
-						<input class="form-control" id="name" type="text"
-							placeholder="Enter your name..." data-sb-validations="required" />
+						<input class="form-control" id="password" type="text"
+							placeholder="비밀번호를 입력하세요" />
 						<label for="name">비밀번호</label>
-						<div class="invalid-feedback" data-sb-feedback="name:required">A
-							name is required.</div>
 					</div>
-					<!-- password check input-->
+					<!-- 비밀번호 확인 -->
 					<div class="form-floating mb-3">
-						<input class="form-control" id="name" type="text"
-							placeholder="Enter your name..." data-sb-validations="required" />
+						<input class="form-control" id="confirmPassword" type="text"
+							placeholder="비밀번호 재확인" />
 						<label for="name">비밀번호 재확인</label>
-						<div class="invalid-feedback" data-sb-feedback="name:required">A
-							name is required.</div>
 					</div>
-					<!-- name input-->
+					<!-- 이름 -->
 					<div class="form-floating mb-3">
-						<input class="form-control" id="name" type="text"
-							placeholder="Enter your name..." data-sb-validations="required" />
+						<input class="form-control" id="userName" type="text" placeholder="이름을 입력하세요"/>
 						<label for="name">이름</label>
-						<div class="invalid-feedback" data-sb-feedback="name:required">A
-							name is required.</div>
 					</div>
-					<!-- Email address input-->
+					<!-- 이메일 -->
 					<div class="form-floating mb-3">
 						<input class="form-control" id="email" type="email"
-							placeholder="name@example.com"
-							data-sb-validations="required,email" /> <label for="email">이메일</label>
-						<div class="invalid-feedback" data-sb-feedback="email:required">An
-							email is required.</div>
-						<div class="invalid-feedback" data-sb-feedback="email:email">Email
-							is not valid.</div>
+							placeholder="이메일을 입력하세요" />
+							<label for="email">이메일</label>
 					</div>
-					<!-- Phone number input-->
+					<!-- 전화번호 -->
 					<div class="form-floating mb-3">
-						<input class="form-control" id="phone" type="tel"
-							placeholder="(123) 456-7890" data-sb-validations="required" /> <label
+						<input class="form-control" id="phoneNumber" type="tel"
+							placeholder="전화번호를 입력하세요" /> <label
 							for="phone">전화번호</label>
-						<div class="invalid-feedback" data-sb-feedback="phone:required">A
-							phone number is required.</div>
 					</div>
 					
 					<!-- Submit success message-->
@@ -72,8 +58,7 @@
 					<div class="d-none" id="submitSuccessMessage">
 						<div class="text-center mb-3">
 							<div class="fw-bolder">Form submission successful!</div>
-							To activate this form, sign up at <br /> <a
-								href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+							To activate this form, sign up at <br /> 
 						</div>
 					</div>
 					<!-- Submit error message-->
@@ -89,6 +74,11 @@
 						<button class="btn btn-primary btn-xl disabled" id="submitButton"
 							type="submit">가입하기</button>
 					</div>
+					
+					<hr>
+		   			<div class="text-center">
+		        		<a class="small" href="${contextPath}/menu/account/login">이미 계정이 있으신가요? 로그인하러 가기!</a>
+		    		</div>
 				</form>
 			</div>
 		</div>
@@ -102,4 +92,4 @@
 	</div>
 </section>
 
-<%@ include file="../layout/footer.jsp"%>
+<%@ include file="../../layout/footer.jsp"%>
