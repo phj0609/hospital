@@ -9,7 +9,7 @@
 		<div
 			class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
 			<div class="col-lg-8 align-self-end">
-				<h1 class="text-white font-weight-bold">반려동물도 우리가족,<br>가족을 위해 항상 최선을 다하겠습니다.</h1>
+				<h1 class="text-white font-weight-bold">반려동물도 우리가족,<br>가족을 위해 항상<br>최선을 다하겠습니다</h1>
 				<hr class="divider" />
 			</div>
 			<div class="col-lg-8 align-self-baseline">
@@ -38,7 +38,7 @@
 <!-- Services-->
 <section class="page-section" id="services">
 	<div class="container px-4 px-lg-5">
-		<h2 class="text-center mt-0">At Your Service</h2>
+		<h2 class="text-center mt-0">Service</h2>
 		<hr class="divider" />
 		<div class="row gx-4 gx-lg-5">
 			<div class="col-lg-3 col-md-6 text-center">
@@ -56,9 +56,8 @@
 					<div class="mb-2">
 						<i class="bi-laptop fs-1 text-primary"></i>
 					</div>
-					<h3 class="h4 mb-2">Up to Date</h3>
-					<p class="text-muted mb-0">All dependencies are kept current to
-						keep things fresh.</p>
+					<h3 class="h4 mb-2">편리한 진료예약</h3>
+					<p class="text-muted mb-0">온라인으로 보단 편리하게 예약 서비스를 이용할 수 있습니다</p>
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6 text-center">
@@ -87,9 +86,9 @@
 <!-- Call to action-->
 <section class="page-section bg-dark text-white">
 	<div class="container px-4 px-lg-5 text-center">
-		<h2 class="mb-4">Free Download at Start Bootstrap!</h2>
+		<h2 class="mb-4">우리는 반려동물들이 행복한 삶을 살 수 있도록 최선을 다합니다.</h2>
 		<a class="btn btn-light btn-xl"
-			href="https://startbootstrap.com/theme/creative/">Download Now!</a>
+			href="${contextPath}/menu/info">진료안내</a>
 	</div>
 </section>
 <%@ include file="layout/footer.jsp"%>

@@ -27,6 +27,7 @@
 	<select id="getList" resultType="me.hyun.model.Board">
 		select * from board_tbl 
 		<include refid="searchCondition" />
+		order by bno desc
 		limit #{pageStart}, #{perPageNum}
 	</select>
 	

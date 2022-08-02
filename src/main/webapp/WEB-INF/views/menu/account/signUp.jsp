@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ include file="../../layout/header.jsp"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <section class="page-section" id="signup">
 	<div class="container px-4 px-lg-5">
 		<div class="row gx-4 gx-lg-5 justify-content-center">
@@ -14,64 +15,52 @@
 		</div>
 		<div class="row gx-4 gx-lg-5 justify-content-center mb-5">
 			<div class="col-lg-6">
-				<form id="contactForm" method="post" modelAttribute="member">
+				<form:form id="contactForm" method="post" modelAttribute="member">
+					<!-- <input type="hidden" name="_csrf" value="{_csrf.token}"> -->
 					<!-- 아이디 -->
 					<div class="form-floating mb-3">
-						<input class="form-control" id="userId" type="text"
+						<form:input class="form-control" path="userId"  type="text"
 							placeholder="아이디를 입력하세요"/>
 						<label for="name">아이디</label>
+						<form:errors path="userId"/>
 					</div>
 					<!-- 비밀번호 -->
 					<div class="form-floating mb-3">
-						<input class="form-control" id="password" type="text"
+						<form:input class="form-control" path="password" type="password"
 							placeholder="비밀번호를 입력하세요" />
 						<label for="name">비밀번호</label>
+						<form:errors path="password"/>
 					</div>
 					<!-- 비밀번호 확인 -->
 					<div class="form-floating mb-3">
-						<input class="form-control" id="confirmPassword" type="text"
+						<form:input class="form-control" path="confirmPassword" type="password"
 							placeholder="비밀번호 재확인" />
-						<label for="name">비밀번호 재확인</label>
+						<label for="confirmPassword">비밀번호 재확인</label>
+						<form:errors path="confirmPassword"/>
 					</div>
 					<!-- 이름 -->
 					<div class="form-floating mb-3">
-						<input class="form-control" id="userName" type="text" placeholder="이름을 입력하세요"/>
-						<label for="name">이름</label>
+						<form:input class="form-control" path="userName" type="text" placeholder="이름을 입력하세요"/>
+						<label for="userName">이름</label>
+						<form:errors path="userName"/>
 					</div>
 					<!-- 이메일 -->
 					<div class="form-floating mb-3">
-						<input class="form-control" id="email" type="email"
+						<form:input class="form-control" path="email"  type="email"
 							placeholder="이메일을 입력하세요" />
 							<label for="email">이메일</label>
+							<form:errors path="email"/>
 					</div>
 					<!-- 전화번호 -->
 					<div class="form-floating mb-3">
-						<input class="form-control" id="phoneNumber" type="tel"
+						<form:input class="form-control" path="phoneNumber" type="tel" 
 							placeholder="전화번호를 입력하세요" /> <label
 							for="phone">전화번호</label>
-					</div>
-					
-					<!-- Submit success message-->
-					<!---->
-					<!-- This is what your users will see when the form-->
-					<!-- has successfully submitted-->
-					<div class="d-none" id="submitSuccessMessage">
-						<div class="text-center mb-3">
-							<div class="fw-bolder">Form submission successful!</div>
-							To activate this form, sign up at <br /> 
-						</div>
-					</div>
-					<!-- Submit error message-->
-					<!---->
-					<!-- This is what your users will see when there is-->
-					<!-- an error submitting the form-->
-					<div class="d-none" id="submitErrorMessage">
-						<div class="text-center text-danger mb-3">Error sending
-							message!</div>
-					</div>
+							<form:errors path="phoneNumber"/>
+					</div>					
 					<!-- Submit Button-->
 					<div class="d-grid">
-						<button class="btn btn-primary btn-xl disabled" id="submitButton"
+						<button class="btn btn-primary btn-xl" id="submitButton"
 							type="submit">가입하기</button>
 					</div>
 					
@@ -79,7 +68,7 @@
 		   			<div class="text-center">
 		        		<a class="small" href="${contextPath}/menu/account/login">이미 계정이 있으신가요? 로그인하러 가기!</a>
 		    		</div>
-				</form>
+				</form:form>
 			</div>
 		</div>
 		<div class="row gx-4 gx-lg-5 justify-content-center">

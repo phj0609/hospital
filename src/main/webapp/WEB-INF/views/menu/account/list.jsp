@@ -1,12 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-회원목록 페이지 -  관리자만 접근가능
-</body>
-</html>
+<%@ include file="../../layout/header.jsp" %>
+<div class="jumbotron">
+	<h2>회원정보</h2>
+</div>
+<div class="container">
+	<a href="register" class="btn btn-primary">회원가입</a>
+	<table class="table">
+		<tr>
+			<th>회원번호</th>
+			<th>회원이름</th>
+			<th>이메일</th>
+		</tr>
+		<c:forEach items="${list}" var="m">
+		<tr>
+			<td>${m.id}</td>
+			<td>
+			<a href="${contextPath}/menu/account/get?id=${m.id}">${m.userName}</a>
+			</td>
+			<td>${m.email}</td>
+		</tr>
+		</c:forEach>
+	</table>
+</div>
+<%@ include file="../../layout/footer.jsp" %>
