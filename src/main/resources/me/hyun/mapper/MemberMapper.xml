@@ -31,5 +31,36 @@
 		delete from member_tbl where id=#{id}
 	</delete>
 	
+	<resultMap type="me.hyun.model.Member" id="memberMap">
+		<id property="userId" column="userId" />
+		<result property="id" column="id" />
+		<result property="userId" column="userId" />
+		<result property="password" column="password" />
+		<result property="userName" column="userName" />
+		<result property="enabled" column="enabled" />
+		<collection property="authList" resultMap="authMap"/>
+	</resultMap>
+	<resultMap type="me.hyun.security.AuthVO" id="authMap">
+		<result property="id" column="id" />
+		<result property="userId" column="userId" />
+		<result property="auth" column="auth" />
+	</resultMap>
+	
+	<select id="read" resultMap="memberMap">
+		select * from member_tbl M
+		inner join member_auth A
+		on M.userId= A.userId
+		where M.userId = #{userId}
+	</select>
+	
+	<insert id="authenticate">
+		insert into member_auth(userId,auth)
+		value(#{userId}, #{auth});
+	</insert>
+	
+	<select id="findByUserId" resultType="me.hyun.model.Member">
+		select * from member_tbl
+		where userId = #{userId}
+	</select>
 
 </mapper>

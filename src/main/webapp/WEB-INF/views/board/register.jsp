@@ -19,6 +19,7 @@
 		<div class="form-group">
 			<label>작성자 : </label>
 			<input type="text" class="form-control" name="writer">
+			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
 		</div>
 		<button class="btn btn-primary">등록</button>
 	</form>

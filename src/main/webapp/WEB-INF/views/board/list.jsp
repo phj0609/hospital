@@ -2,13 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <section class="page-section">
-<div class="container">
-   <div class="jumbotron">
-      <h2>게시판</h2>
-   </div>
+<div class="container px-4 px-lg-5">
+		<div class="row gx-4 gx-lg-5 justify-content-center">
+			<div class="col-lg-8 col-xl-6 text-center">
+				<h2 class="mt-0">게시판</h2>
+				<hr class="divider" />
+			</div>
+		</div>
      <!-- 검색 -->
-  <div class="row">
-		<div class="col-md-9">
+  <div class="row ">
+		<div class="col-md-9 ">
 			<form action="${contextPath}/board/list" id="searchForm">
 				<div class="row">
 					<div class="col-md-3" class="form-group">
@@ -80,8 +83,8 @@
 			</c:if>
 		</ul>
 	</div>
-
 	</div>
+</div>
 </section>
 <script>
 

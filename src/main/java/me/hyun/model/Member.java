@@ -1,16 +1,19 @@
 package me.hyun.model;
 
+import java.util.List;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import me.hyun.common.FieldMatch;
+import me.hyun.security.AuthVO;
 
 @Setter
 @Getter
@@ -18,6 +21,7 @@ import me.hyun.common.FieldMatch;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldMatch(first = "confirmPassword", second = "password", message = "비밀번호가 일치하지 않음")
+@Builder
 public class Member {
 	// 아이디
 	// 비밀번호
@@ -39,6 +43,7 @@ public class Member {
 	public boolean passwordMatch(String password) {
 		return this.password.equals(password);
 	}
+	
 	@NotEmpty(message = "이름을 입력하세요")
 	@Pattern(regexp = "^[가-힣|a-z|A-Z]{2,5}$", message = "이름은 한글 또는 영어 2~5글자이어야 합니다.")
 	private String userName; // 이름
@@ -50,4 +55,7 @@ public class Member {
 	@NotEmpty(message = "전화번호를 입력하세요")
 	@Pattern(regexp = "^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$", message = "전화번호를 올바르게 입력하세요.")
 	private String phoneNumber; // 전화번호
+	private String enabled;
+	
+	private List<AuthVO> authList; 
 }

@@ -11,4 +11,5 @@ public interface MemberService {
 	void modify(Member member);
 	void remove(Long id);
 	List<Member> getList();
+	Member findById(String userId);
 }

@@ -1,7 +1,5 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ include file="layout/header.jsp"%>
 <!-- Masthead-->
 <header class="masthead">
@@ -91,4 +89,5 @@
 			href="${contextPath}/menu/info">진료안내</a>
 	</div>
 </section>
+<a href="#" class="go-to-top" style="top : 901px">top</a>
 <%@ include file="layout/footer.jsp"%>

@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../../layout/header.jsp"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <section class="page-section" id="signup">
 	<div class="container px-4 px-lg-5">
 		<div class="row gx-4 gx-lg-5 justify-content-center">
@@ -16,45 +15,51 @@
 		<div class="row gx-4 gx-lg-5 justify-content-center mb-5">
 			<div class="col-lg-6">
 				<form:form id="contactForm" method="post" modelAttribute="member">
-					<!-- <input type="hidden" name="_csrf" value="{_csrf.token}"> -->
+					<input type="hidden" name="_csrf" value="{_csrf.token}">
 					<!-- 아이디 -->
-					<div class="form-floating mb-3">
-						<form:input class="form-control" path="userId"  type="text"
-							placeholder="아이디를 입력하세요"/>
+					<div class="d-flex justify-content-between">
+					<span class="form-floating mb-3 col-lg-10">
+						<form:input class="form-control" path="userId" type="text"
+							placeholder="아이디를 입력하세요" required readonly="readonly"/>
 						<label for="name">아이디</label>
 						<form:errors path="userId"/>
+					</span>
+					<span class="col-lg-" >
+						<button type="button" class="id_ckeck">아이디<br>중복체크</button>
+					</span>
 					</div>
+						
 					<!-- 비밀번호 -->
 					<div class="form-floating mb-3">
 						<form:input class="form-control" path="password" type="password"
-							placeholder="비밀번호를 입력하세요" />
+							placeholder="비밀번호를 입력하세요" required/>
 						<label for="name">비밀번호</label>
 						<form:errors path="password"/>
 					</div>
 					<!-- 비밀번호 확인 -->
 					<div class="form-floating mb-3">
 						<form:input class="form-control" path="confirmPassword" type="password"
-							placeholder="비밀번호 재확인" />
+							placeholder="비밀번호 재확인" required/>
 						<label for="confirmPassword">비밀번호 재확인</label>
 						<form:errors path="confirmPassword"/>
 					</div>
 					<!-- 이름 -->
 					<div class="form-floating mb-3">
-						<form:input class="form-control" path="userName" type="text" placeholder="이름을 입력하세요"/>
+						<form:input class="form-control" path="userName" type="text" placeholder="이름을 입력하세요" required/>
 						<label for="userName">이름</label>
 						<form:errors path="userName"/>
 					</div>
 					<!-- 이메일 -->
 					<div class="form-floating mb-3">
 						<form:input class="form-control" path="email"  type="email"
-							placeholder="이메일을 입력하세요" />
+							placeholder="이메일을 입력하세요" required/>
 							<label for="email">이메일</label>
 							<form:errors path="email"/>
 					</div>
 					<!-- 전화번호 -->
 					<div class="form-floating mb-3">
 						<form:input class="form-control" path="phoneNumber" type="tel" 
-							placeholder="전화번호를 입력하세요" /> <label
+							placeholder="전화번호를 입력하세요" required/> <label
 							for="phone">전화번호</label>
 							<form:errors path="phoneNumber"/>
 					</div>					
@@ -70,6 +75,7 @@
 		    		</div>
 				</form:form>
 			</div>
+			
 		</div>
 		<div class="row gx-4 gx-lg-5 justify-content-center">
 			<div class="col-lg-4 text-center mb-5 mb-lg-0">
@@ -81,4 +87,57 @@
 	</div>
 </section>
 
+<div class="fade modal" id="select_id">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">아이디 중복 확인</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        <div class="modal-body">
+        	<div class="form-group">
+        		<input type="text" class="userId form-control">
+        	</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary findUserId">조회</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
 <%@ include file="../../layout/footer.jsp"%>
+<script>
+
+$(function(){
+	// 아이디 중복 조회 모달창 
+	$('.id_ckeck').on('click',function(){
+		$('#select_id').find('.userId').val('');
+		$('#select_id').modal('show');
+	});
+	
+	// 
+	$('.findUserId').on('click',function(){
+		let userId = $('#select_id').find('.userId').val();
+		if(userId.trim()=='' || userId==null) {
+			alert('아이디를 입력하세요')
+			return; 
+		}
+		let url = contextPath + "/member/idCheck/" + userId;
+		$.getJSON(url,function(result){
+			if(result){ // 사용가능
+				alert('사용가능한 아이디 입니다.')
+				$('#contactForm').find('input[name="userId"]').val(userId);
+				$('#select_id').modal('hide');
+				
+			} else { // 사용 불가능
+				alert('아이디 중복입니다. 사용할 수 없습니다.')
+			}			
+		}).fail(function(){
+			alert('통신에러')
+		});
+		
+	})
+})
+</script>

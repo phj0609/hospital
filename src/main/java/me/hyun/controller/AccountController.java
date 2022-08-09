@@ -1,7 +1,5 @@
 package me.hyun.controller;
 
-import java.util.Map;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,19 +7,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import me.hyun.model.Member;
-import me.hyun.service.MemberServiceImp;
+import me.hyun.service.MemberService;
 
 @Controller
 @RequestMapping("/menu/account")
 public class AccountController {
 
 	@Autowired
-	MemberServiceImp service;
+	private MemberService service;
 	
 	
 	@GetMapping("/signUp")
@@ -35,19 +35,32 @@ public class AccountController {
 			return "menu/account/signUp";
 		}
 		service.register(member);
-		return "redirect:success";
+		return "redirect:/";
 	}
 
 	@GetMapping("/login")
 	public String login() {
 		return "menu/account/login";
-	} // 로그인
-
-	@GetMapping("/success")
-	public String success(Model model) {
+	} // 로그인 
+	
+//	@GetMapping("/home")
+//	public String successLogin(Model model) {
+//		model.addAttribute("list", service.getList());
+//		return "/home";
+//	}
+	
+//	@GetMapping("/success")
+//	public String success(Model model) {
+//		model.addAttribute("list", service.getList());
+//		return "menu/account/success";
+//	}
+	
+	@GetMapping("/list")
+	public String list(Model model) {
 		model.addAttribute("list", service.getList());
-		return "menu/account/success";
-	}
+		return "menu/account/list";
+	} 
+	
 	
 	@GetMapping("/get")
 	public String get(Long id,Model model) {
@@ -74,5 +87,16 @@ public class AccountController {
 		return "redirect:success";
 	}
 	
-
+	// 아이디 조회
+		@GetMapping("/idCheck/{userId}")
+		@ResponseBody
+		public boolean findByUserId(@PathVariable String userId) {
+			Member findById = service.findById(userId);
+			if(findById!=null) {
+				System.out.println("아이디 중복");
+				return false;
+			}
+			return true; 
+		}
+	
 }

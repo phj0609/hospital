@@ -12,6 +12,6 @@
 	전화번호 : <input type="text" name="phoneNumber" value="${member.phoneNumber}"><br>
 	<button class="btn btn-primary">수정하기</button>
 </form>
-</section>
 </div>
+</section>
 <%@ include file="../../layout/footer.jsp" %>

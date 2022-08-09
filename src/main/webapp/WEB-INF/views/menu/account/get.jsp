@@ -21,6 +21,7 @@
 		<button class="btn btn-warning modify">수정</button>
 		<button class="btn btn-danger remove">삭제</button>
 		<button class="btn btn-primary success">목록</button>
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	</form>
 </div>
 </section>
