@@ -51,3 +51,9 @@
 	</div>
 </section>
 <%@ include file="../../layout/footer.jsp"%>
+
+<script>
+	
+	let t = $('input[type="hidden"]').val();
+	console.log(t);
+</script>

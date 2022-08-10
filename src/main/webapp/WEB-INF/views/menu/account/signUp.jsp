@@ -15,12 +15,11 @@
 		<div class="row gx-4 gx-lg-5 justify-content-center mb-5">
 			<div class="col-lg-6">
 				<form:form id="contactForm" method="post" modelAttribute="member">
-					<input type="hidden" name="_csrf" value="{_csrf.token}">
 					<!-- 아이디 -->
 					<div class="d-flex justify-content-between">
 					<span class="form-floating mb-3 col-lg-10">
-						<form:input class="form-control" path="userId" type="text"
-							placeholder="아이디를 입력하세요" required readonly="readonly"/>
+						<input class="form-control" name="userId" type="text"
+							placeholder="아이디를 입력하세요" value='<c:out value="${member.userId}"/>' readonly="readonly"/>
 						<label for="name">아이디</label>
 						<form:errors path="userId"/>
 					</span>
@@ -32,34 +31,34 @@
 					<!-- 비밀번호 -->
 					<div class="form-floating mb-3">
 						<form:input class="form-control" path="password" type="password"
-							placeholder="비밀번호를 입력하세요" required/>
+							placeholder="비밀번호를 입력하세요" />
 						<label for="name">비밀번호</label>
 						<form:errors path="password"/>
 					</div>
 					<!-- 비밀번호 확인 -->
 					<div class="form-floating mb-3">
 						<form:input class="form-control" path="confirmPassword" type="password"
-							placeholder="비밀번호 재확인" required/>
+							placeholder="비밀번호 재확인" />
 						<label for="confirmPassword">비밀번호 재확인</label>
 						<form:errors path="confirmPassword"/>
 					</div>
 					<!-- 이름 -->
 					<div class="form-floating mb-3">
-						<form:input class="form-control" path="userName" type="text" placeholder="이름을 입력하세요" required/>
+						<form:input class="form-control" path="userName" type="text" placeholder="이름을 입력하세요" />
 						<label for="userName">이름</label>
 						<form:errors path="userName"/>
 					</div>
 					<!-- 이메일 -->
 					<div class="form-floating mb-3">
 						<form:input class="form-control" path="email"  type="email"
-							placeholder="이메일을 입력하세요" required/>
+							placeholder="이메일을 입력하세요" />
 							<label for="email">이메일</label>
 							<form:errors path="email"/>
 					</div>
 					<!-- 전화번호 -->
 					<div class="form-floating mb-3">
 						<form:input class="form-control" path="phoneNumber" type="tel" 
-							placeholder="전화번호를 입력하세요" required/> <label
+							placeholder="전화번호를 입력하세요" /> <label
 							for="phone">전화번호</label>
 							<form:errors path="phoneNumber"/>
 					</div>					
@@ -73,6 +72,7 @@
 		   			<div class="text-center">
 		        		<a class="small" href="${contextPath}/menu/account/login">이미 계정이 있으신가요? 로그인하러 가기!</a>
 		    		</div>
+		    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				</form:form>
 			</div>
 			
@@ -101,7 +101,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary findUserId">조회</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger modalClose" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -109,6 +109,7 @@
 
 <%@ include file="../../layout/footer.jsp"%>
 <script>
+console.log($('input[type="hidden"]').val())
 
 $(function(){
 	// 아이디 중복 조회 모달창 
@@ -117,14 +118,19 @@ $(function(){
 		$('#select_id').modal('show');
 	});
 	
-	// 
+	$('.modalClose').on('click',function(){
+		$(this).closest('#select_id').modal('hide')
+	})
+	
+	// 아이디 중복 조회 
 	$('.findUserId').on('click',function(){
 		let userId = $('#select_id').find('.userId').val();
+		alert(userId);
 		if(userId.trim()=='' || userId==null) {
 			alert('아이디를 입력하세요')
 			return; 
 		}
-		let url = contextPath + "/member/idCheck/" + userId;
+		let url = contextPath + "/menu/account/" + userId;
 		$.getJSON(url,function(result){
 			if(result){ // 사용가능
 				alert('사용가능한 아이디 입니다.')
@@ -136,7 +142,7 @@ $(function(){
 			}			
 		}).fail(function(){
 			alert('통신에러')
-		});
+		}); 
 		
 	})
 })

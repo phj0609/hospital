@@ -3,6 +3,7 @@ package me.hyun.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -88,9 +89,10 @@ public class AccountController {
 	}
 	
 	// 아이디 조회
-		@GetMapping("/idCheck/{userId}")
+		@GetMapping("/{userId}")
 		@ResponseBody
 		public boolean findByUserId(@PathVariable String userId) {
+			System.out.println("userId" + userId);
 			Member findById = service.findById(userId);
 			if(findById!=null) {
 				System.out.println("아이디 중복");
@@ -98,5 +100,4 @@ public class AccountController {
 			}
 			return true; 
 		}
-	
 }
