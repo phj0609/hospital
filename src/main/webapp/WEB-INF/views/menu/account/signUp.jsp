@@ -27,7 +27,6 @@
 						<button type="button" class="id_ckeck">아이디<br>중복체크</button>
 					</span>
 					</div>
-						
 					<!-- 비밀번호 -->
 					<div class="form-floating mb-3">
 						<form:input class="form-control" path="password" type="password"

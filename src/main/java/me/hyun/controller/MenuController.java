@@ -13,4 +13,23 @@ public class MenuController {
 		return "menu/info";
 	}
 	
+	@GetMapping("/vet")
+	public String vet() {
+		return "menu/vet";
+	}
+	
+	@GetMapping("/facility")
+	public String fac() {
+		return "menu/facility";
+	}
+	
+	@GetMapping("/map")
+	public String map() {
+		return "menu/map";
+	}
+	
+	@GetMapping("/res")
+	public String res() {
+		return "menu/res";
+	}
 }

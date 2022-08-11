@@ -4,7 +4,7 @@
 <section class="page-section">
 <div class="row gx-4 gx-lg-5 justify-content-center">
 			<div class="col-lg-8 col-xl-6 text-center">
-				<h2 class="mt-0">병원안내</h2>
+				<h1 class="mt-0">병원안내</h1>
 				<hr class="divider" />
 			</div>
 		</div>
@@ -17,13 +17,13 @@
           <a class="nav-link active" href="#">진료안내</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">메뉴2</a>
+          <a class="nav-link" href="${contextPath}/menu/vet">의료진 소개</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">메뉴3</a>
+          <a class="nav-link" href="${contextPath}/menu/facility">병원 시설</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">메뉴4</a>
+          <a class="nav-link" href="${contextPath}/menu/map">오시는 길</a>
         </li>
       </ul>
       <hr class="d-sm-none">
@@ -31,6 +31,9 @@
     <div class="col-sm-8">
       <h2>반려동물의 건강과 행복을 위해<br> 언제나 최고의 진료를 약속드립니다.</h2>
       <hr class="divider" />
+      <div class="text-center">
+      <img alt="" src="${contextPath}/resources/img/icons(1).jpg">
+      </div>
       <p>노령동물뿐만 아니라, 통증을 숨기고 질병이 심화되어 내원하는 동물환자의 특성상 한 분야의 수의사가 진단, 치료, 관리, 식이, 재활 등 모든 진료영역을 통제할 수 없습니다. 각 분야별 전문가들이 한 환자의 다양한 질병상태를 고려하여 진단, 치료, 관리 영역에 적극 개입하여 최적의 방향을 제시하고 있습니다.</p>
       <br>
       <h2 class="info">진료안내</h2>
@@ -82,6 +85,6 @@
 	table { text-align: center; }
 	.info { text-align: center; } 
 	.sat { text-align: center; }
-	h2, p { text-align: center; }
+	h1, h2, p { text-align: center; }
 </style>
 <%@ include file="../layout/footer.jsp"%>

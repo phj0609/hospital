@@ -10,6 +10,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>위드동물병원</title>
@@ -28,7 +29,16 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<script>let contextPath = "${contextPath}"</script>
+<script>
+	let contextPath = "${contextPath}"
+	$(function(){
+		$('.logout').click(function(e){
+			e.preventDefault(); 
+			$(this).closest('form').submit();
+		})
+	})
+
+</script>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -39,14 +49,30 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href="${contextPath}/menu/info">병원소개</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#services">진료예약</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${contextPath}/menu/res">진료예약</a></li>
                         <li class="nav-item"><a class="nav-link" href="#portfolio">예약확인</a></li>
                         <li class="nav-item"><a class="nav-link" href="${contextPath}/board/list">게시판</a></li>
                         <sec:authorize access="isAnonymous()">
 	                        <li class="nav-item"><a class="nav-link" href="${contextPath}/menu/account/login">로그인</a></li>
 	                        <li class="nav-item"><a class="nav-link" href="${contextPath}/menu/account/signUp">회원가입</a></li>
                         </sec:authorize>
+                        <sec:authorize access="hasRole('ADMIN')">
+		 					<li class="nav-item"><a class="nav-link" href="${contextPath}/security/admin">관리자페이지</a></li>
+		 				</sec:authorize>
+		 				<sec:authorize access="hasRole('MEMBER')">
+		 					<li class="nav-item"><a class="nav-link" href="${contextPath}/security/member">마이페이지</a></li>
+		 				</sec:authorize>
+		 				<sec:authorize access="hasAnyRole('MEMBER','ADMIN')">
+		 					<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
+		 					<li class="nav-item">
+		 						<form action="${contextPath}/logout" method="post">
+	 								<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
+	 								<a href="#" class="logout nav-link">로그아웃</a>
+	 							</form>
+		 					</li>
+		 				</sec:authorize>
                     </ul>
                 </div>
             </div>
         </nav>
+        

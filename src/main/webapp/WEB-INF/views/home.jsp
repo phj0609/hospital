@@ -44,7 +44,7 @@
 					<div class="mb-2">
 						<i class="bi-gem fs-1 text-primary"></i>
 					</div>
-					<h3 class="h4 mb-2">Sturdy Themes</h3>
+					<h3 class="h4 mb-2">튼튼한 아이를 위해</h3>
 					<p class="text-muted mb-0">Our themes are updated regularly to
 						keep them bug free!</p>
 				</div>
@@ -55,7 +55,7 @@
 						<i class="bi-laptop fs-1 text-primary"></i>
 					</div>
 					<h3 class="h4 mb-2">편리한 진료예약</h3>
-					<p class="text-muted mb-0">온라인으로 보단 편리하게 예약 서비스를 이용할 수 있습니다</p>
+					<p class="text-muted mb-0">온라인으로 보다 편리하게 예약 서비스를 이용할 수 있습니다</p>
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6 text-center">

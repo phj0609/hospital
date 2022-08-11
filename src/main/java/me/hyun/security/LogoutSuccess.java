@@ -14,6 +14,7 @@ public class LogoutSuccess implements LogoutSuccessHandler{
 	@Override
 	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {
+		System.out.println("로그아웃");
 		response.sendRedirect( request.getContextPath() + "/menu/account/login");
 	}
 
