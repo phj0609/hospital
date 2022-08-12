@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.hyun.mapper.GuestMapper">
+	
+	<select id="getList" resultType="me.hyun.model.Guest">
+		select * from guest_tbl
+	</select>
+	
+	<insert id="insert">
+		insert into guest_tbl(userName,phoneNumber)
+		values(#{userName},#{phoneNumber});
+		<selectKey keyProperty="id" order="AFTER" resultType="Long">
+			select last_insert_id();
+		</selectKey>
+	</insert>
+
+	<update id="update">
+		update guest_tbl
+		set
+		userName = #{userName},
+		phoneNumber = #{phoneNumber}
+		where id = #{id}
+	</update>
+	
+	<select id="get" resultType="me.hyun.model.Guest">
+		select * from guest_tbl where id = #{id}
+	</select>
+	
+	<delete id="delete">
+		delete from guest_tbl where id=#{id}
+	</delete>
+
+</mapper>
