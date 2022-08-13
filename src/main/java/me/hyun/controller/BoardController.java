@@ -37,7 +37,6 @@ public class BoardController {
 
 	@GetMapping("/get")
 	public String get(Long bno, Model model) {
-		System.out.println(bno);
 		Board read = service.read(bno);
 		model.addAttribute("board", service.read(bno));
 		return "board/get";
@@ -51,7 +50,6 @@ public class BoardController {
 	@PostMapping("/register")
 	public String register(Board vo, RedirectAttributes rttr) {
 		service.register(vo);
-		System.out.println(vo);
 		rttr.addFlashAttribute("result", "register");
 		rttr.addFlashAttribute("bno", vo.getBno());
 		return "redirect:list";

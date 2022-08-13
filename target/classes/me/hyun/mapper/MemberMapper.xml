@@ -37,6 +37,8 @@
 		<result property="userId" column="userId" />
 		<result property="password" column="password" />
 		<result property="userName" column="userName" />
+		<result property="phoneNumber" column="phoneNumber" />
+		<result property="email" column="email" />
 		<result property="enabled" column="enabled" />
 		<collection property="authList" resultMap="authMap"/>
 	</resultMap>

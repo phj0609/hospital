@@ -47,10 +47,10 @@
 		4.개인정보 수집, 이용에 대한 동의가 없으면 서비스를 이용할 수 없습니다.
 		</textarea>
 		<label class="radio-lnline">
-			<input name="agree" type="radio">동의함
+			<input name="agree" type="radio" data-agree="agree" checked="checked">동의함
 		</label>
 		<label class="radio-lnline">
-			<input name="agree" type="radio">동의하지 않음
+			<input name="agree" type="radio" data-agree="disagree">동의하지 않음
 		</label>
 		<div class="row gx-4 gx-lg-5 justify-content-center mb-5">
 			<div class="col-lg-6">
@@ -116,13 +116,21 @@
 </style>
 <script>
 $(function(){
+
+	let agreeValue = 'agree';
+	$('input[name="agree"]').change(function(){
+		//console.log('체크!!')
+		agreeValue=$(this).data('agree');
+		//console.log(agreeValue);
+	})
 	
 	$("#contactForm button").on('click',function(e){
 		e.preventDefault();
-		
-		// 라디오버튼 밸리데이션확인??
-		
-		
+
+		if(agreeValue!='agree'){
+			alert('동의하지 않으면 예약할 수 없습니다.');
+			return; 
+		}
 		// 입력한 값 가져오기 
 		$('.inputName').text($('#userName').val());
 		$('.inputPhoneNumber').text($('#phoneNumber').val());

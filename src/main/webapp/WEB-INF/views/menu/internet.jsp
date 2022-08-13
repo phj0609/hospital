@@ -25,8 +25,25 @@
     </div>
     <div class="col-sm-8">
       <h2><strong>인터넷 예약</strong></h2>
-	
+      <sec:authentication property="principal.member" var="member"/>
+			<h4>이름:${member.userName}</h4>
+			<h4>연락처: ${member.phoneNumber}</h4>
+			<h4>진료항목</h4>
+			  <label><input type="checkbox" name="res" value="">일반진료</label>
+      		  <label><input type="checkbox" name="res" value="">예방접종</label>
+      		  <label><input type="checkbox" name="res" value="">건강검진</label>
+      		  <label><input type="checkbox" name="res" value="">수술상담</label><br>
+					<h4>예약날짜선택</h4>
+					<h4>예약시간 선택</h4>
+					<h4>예약 상세 내용 또는 남기고 싶은 말 (선택)</h4>
+					<textarea rows="10" class="form-control" name="content"></textarea>
+					<div class="d-grid">
+						<button class="btn btn-primary btn-xl" id="submitButton"
+							type="submit">예약하기</button>
+					</div>			
+			</div>
 	</div>		
+</div>
 </div>
 </div>
 </section>

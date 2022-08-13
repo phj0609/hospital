@@ -92,7 +92,6 @@ public class AccountController {
 		@GetMapping("/{userId}")
 		@ResponseBody
 		public boolean findByUserId(@PathVariable String userId) {
-			System.out.println("userId" + userId);
 			Member findById = service.findById(userId);
 			if(findById!=null) {
 				System.out.println("아이디 중복");

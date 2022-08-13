@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import me.hyun.model.Guest;
+import me.hyun.model.Member;
+import me.hyun.security.CustomUser;
 import me.hyun.service.GuestService;
 
 @Controller
@@ -57,15 +60,18 @@ public class MenuController {
 	}
 	
 	// 초진 예약자 리스트
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')") 
 	@GetMapping("/res/list")
 	public String list(Model model) {
 		model.addAttribute("list", service.getList());
 		return "menu/res/list";
 	}
 	
+	// 멤버 - 인터넷예약
+	@PreAuthorize("hasRole('ROLE_MEMBER')") // 이건 또 왜이래...
 	@GetMapping("/internet")
-	public String in_res() {
+	public String in_res(Member member) {
+		
 		return "menu/internet";
 	}
 	
