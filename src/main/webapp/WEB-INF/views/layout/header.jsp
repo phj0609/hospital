@@ -50,7 +50,7 @@
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href="${contextPath}/menu/info">병원소개</a></li>
                         <li class="nav-item"><a class="nav-link" href="${contextPath}/menu/res">진료예약</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">예약확인</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${contextPath}/menu/check">예약확인</a></li>
                         <li class="nav-item"><a class="nav-link" href="${contextPath}/board/list">게시판</a></li>
                         <sec:authorize access="isAnonymous()">
 	                        <li class="nav-item"><a class="nav-link" href="${contextPath}/menu/account/login">로그인</a></li>

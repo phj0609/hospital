@@ -7,7 +7,8 @@
 		<h3>글 수정</h3>	
 	</div>
 	<form action="${contextPath}/board/modify" method="post">
-		<input type="hidden" name="bno" value="${board.bno}"> 
+		<input type="hidden" name="bno" value="${board.bno}">
+		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}"> 
 		<div class="form-group">
 			<label>제목 : </label>
 			<input type="text" class="form-control" name="title" value="${board.title }">

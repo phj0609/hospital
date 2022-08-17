@@ -20,4 +20,5 @@ public class Board {
 	private String writer;
 	private LocalDateTime regDate;
 	private LocalDateTime updateDate;
+	
 }

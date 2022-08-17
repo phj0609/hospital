@@ -15,14 +15,10 @@ public class CustomUserDetailService implements UserDetailsService {
 	@Autowired
 	MemberMapper mapper;
 	
-	public CustomUserDetailService() {
-		System.out.println("CustomUserDetailService 생성");
-	}
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Member member = mapper.read(username);
-		System.out.println(member);
 		if (member == null) {
 			throw new UsernameNotFoundException(username);
 		}

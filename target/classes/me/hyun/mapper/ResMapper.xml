@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.hyun.mapper.ResMapper">
+
+	<select id="getList" resultType="me.hyun.model.Res">
+		select * from res_tbl
+		<if test="userName !=null and phoneNumber!=null">
+			where userName = #{userName} and phoneNumber = #{phoneNumber} 
+		</if>
+	</select>
+	
+	<insert id="insert">
+		insert into res_tbl(userName,phoneNumber,resDate,resTime,resType,resContent)
+		values(#{userName},#{phoneNumber},#{resDate},#{resTime},#{resType},#{resContent})
+		<selectKey keyProperty="resId" order="AFTER" resultType="Long">
+			select last_insert_id();
+		</selectKey>
+	</insert>
+</mapper>

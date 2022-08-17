@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import me.hyun.mapper.BoardMapper;
 import me.hyun.model.Board;
 import me.hyun.model.Criteria;
@@ -12,7 +11,9 @@ import me.hyun.model.Criteria;
 @Service
 public class BoardServiceImpl implements BoardService {
 
+	@Autowired
 	private BoardMapper mapper;
+	
 	
 	@Autowired
 	public void setMapper(BoardMapper mapper) {
@@ -48,6 +49,6 @@ public class BoardServiceImpl implements BoardService {
 	public Integer getTotal(Criteria criteria) {
 		return mapper.totalCount(criteria);
 	}
-	
+
 
 }

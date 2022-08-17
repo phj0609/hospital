@@ -1,5 +1,6 @@
 package me.hyun.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.validation.constraints.Email;
@@ -8,6 +9,7 @@ import javax.validation.constraints.Pattern;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,7 +24,11 @@ import me.hyun.security.AuthVO;
 @NoArgsConstructor
 @FieldMatch(first = "confirmPassword", second = "password", message = "비밀번호가 일치하지 않음")
 @Builder
-public class Member {
+@Data
+public class Member implements Serializable{
+
+	private static final long serialVersionUID = -2347096176722493653L;
+
 	// 아이디
 	// 비밀번호
 	// 비밀번호 재확인
@@ -57,5 +63,5 @@ public class Member {
 	private String phoneNumber; // 전화번호
 	private String enabled;
 	
-	private List<AuthVO> authList; 
+	private List<AuthVO> authList;
 }

@@ -56,6 +56,7 @@ public class AccountController {
 //		return "menu/account/success";
 //	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/list")
 	public String list(Model model) {
 		model.addAttribute("list", service.getList());

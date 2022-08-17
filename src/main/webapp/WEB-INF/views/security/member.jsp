@@ -1,27 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <section class="page-section">
-<div class="container px-4 px-lg-5">
+	<div class="container px-4 px-lg-5">
 		<div class="row gx-4 gx-lg-5 justify-content-center">
 			<div class="col-lg-8 col-xl-6 text-center">
-				<h2 class="mt-0">멤버페이지</h2>
+				<h2 class="mt-0">마이페이지</h2>
 				<hr class="divider" />
 			</div>
 		</div>
-		<p>principal : <sec:authentication property="principal"/><br></p>
-		<p>member : <sec:authentication property="principal.member" var="member"/><br></p>
-		멤버 아이디 : ${member.userId}<br>
-		멤버 이름 : ${member.userName}<br>
-		멤버 권한 : 
-		<c:forEach items="${member.authList}" var="authList">
-			${authList.auth}
-		</c:forEach>
+		<sec:authentication property="principal.member" var="member" />
 		<br>
-	 <form action="${contextPath}/logout" method="post">
-	 	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
-	 	<button class="btn btn-primary">로그아웃</button>
-	 </form>
+		<h2>아이디 : ${member.userId}</h2>
+		<h2>이름 : ${member.userName}</h2>
+		<h2>이메일 : ${member.email}</h2>
+		<h2>전화번호 : ${member.phoneNumber}</h2>
+		<a class="btn btn-secondary btn-xl" href="${contextPath}/menu/check">예약확인</a>
+		<form action="${contextPath}/logout" method="post">
+			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
+			<button class="btn btn-danger btn-xl">로그아웃</button>
+		</form>
 	</div>
 </section>
-<%@ include file="../layout/footer.jsp" %>
+<%@ include file="../layout/footer.jsp"%>
