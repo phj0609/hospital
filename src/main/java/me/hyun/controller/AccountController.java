@@ -24,12 +24,13 @@ public class AccountController {
 	@Autowired
 	private MemberService service;
 	
-	
+	// 회원가입
 	@GetMapping("/signUp")
 	public String join(Member member) {
 		return "menu/account/signUp";
 	} 
 	
+	// 회원가입
 	@PostMapping("/signUp")
 	public String register(@Valid Member member, Errors errors) {
 		if (errors.hasErrors()) {
@@ -39,30 +40,19 @@ public class AccountController {
 		return "redirect:/";
 	}
 
+	// 로그인
 	@GetMapping("/login")
 	public String login() {
 		return "menu/account/login";
-	} // 로그인 
+	}  
 	
-//	@GetMapping("/home")
-//	public String successLogin(Model model) {
-//		model.addAttribute("list", service.getList());
-//		return "/home";
-//	}
-	
-//	@GetMapping("/success")
-//	public String success(Model model) {
-//		model.addAttribute("list", service.getList());
-//		return "menu/account/success";
-//	}
-	
+	// 관리자 - 회원목록
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/list")
 	public String list(Model model) {
 		model.addAttribute("list", service.getList());
 		return "menu/account/list";
 	} 
-	
 	
 	@GetMapping("/get")
 	public String get(Long id,Model model) {
@@ -75,29 +65,30 @@ public class AccountController {
 		return "menu/account/modify";
 	}
 	
+	
+	// 아이디 조회
+	@GetMapping("/{userId}")
+	@ResponseBody
+	public boolean findByUserId(@PathVariable String userId) {
+		Member findById = service.findById(userId);
+		if(findById!=null) {
+			System.out.println("아이디 중복");
+			return false;
+		}
+		return true; 
+	}
+	
 	@PostMapping("/modify")
 	public String modify(Member member, RedirectAttributes rttr) {
 		service.modify(member);
 		rttr.addFlashAttribute("message", member.getId());
 		return "redirect:success";
 	}
-	
+		
 	@PostMapping("/remove")
 	public String modify(Long id, RedirectAttributes rttr) {
 		service.remove(id);
 		rttr.addFlashAttribute("message", id);
 		return "redirect:success";
 	}
-	
-	// 아이디 조회
-		@GetMapping("/{userId}")
-		@ResponseBody
-		public boolean findByUserId(@PathVariable String userId) {
-			Member findById = service.findById(userId);
-			if(findById!=null) {
-				System.out.println("아이디 중복");
-				return false;
-			}
-			return true; 
-		}
 }

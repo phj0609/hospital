@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <section class="page-section">
+<div class="container px-4 px-lg-5">
 <div class="row gx-4 gx-lg-5 justify-content-center">
 			<div class="col-lg-8 col-xl-6 text-center">
 				<h1 class="mt-0">예약확인</h1>
@@ -34,7 +35,7 @@
 				</tbody>
 			</c:forEach>
 		</table>
-
+	</div>
 </section>
 
 <%@ include file="../layout/footer.jsp"%>

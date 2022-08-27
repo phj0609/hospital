@@ -21,7 +21,7 @@
 						<input class="form-control" name="userId" type="text"
 							placeholder="아이디를 입력하세요" value='<c:out value="${member.userId}"/>' readonly="readonly"/>
 						<label for="name">아이디</label>
-						<form:errors path="userId"/>
+						<form:errors class="error" path="userId"/>
 					</span>
 					<span class="col-lg-" >
 						<button type="button" class="id_ckeck">아이디<br>중복체크</button>
@@ -32,34 +32,34 @@
 						<form:input class="form-control" path="password" type="password"
 							placeholder="비밀번호를 입력하세요" />
 						<label for="name">비밀번호</label>
-						<form:errors path="password"/>
+						<form:errors class="error" path="password"/>
 					</div>
 					<!-- 비밀번호 확인 -->
 					<div class="form-floating mb-3">
 						<form:input class="form-control" path="confirmPassword" type="password"
 							placeholder="비밀번호 재확인" />
 						<label for="confirmPassword">비밀번호 재확인</label>
-						<form:errors path="confirmPassword"/>
+						<form:errors class="error" path="confirmPassword"/>
 					</div>
 					<!-- 이름 -->
 					<div class="form-floating mb-3">
 						<form:input class="form-control" path="userName" type="text" placeholder="이름을 입력하세요" />
 						<label for="userName">이름</label>
-						<form:errors path="userName"/>
+						<form:errors class="error" path="userName"/>
 					</div>
 					<!-- 이메일 -->
 					<div class="form-floating mb-3">
 						<form:input class="form-control" path="email"  type="email"
 							placeholder="이메일을 입력하세요" />
 							<label for="email">이메일</label>
-							<form:errors path="email"/>
+							<form:errors class="error" path="email"/>
 					</div>
 					<!-- 전화번호 -->
 					<div class="form-floating mb-3">
 						<form:input class="form-control" path="phoneNumber" type="tel" 
 							placeholder="전화번호를 입력하세요" /> <label
 							for="phone">전화번호</label>
-							<form:errors path="phoneNumber"/>
+							<form:errors class="error" path="phoneNumber"/>
 					</div>					
 					<!-- Submit Button-->
 					<div class="d-grid">
@@ -80,7 +80,7 @@
 			<div class="col-lg-4 text-center mb-5 mb-lg-0">
 			<h6>문의사항은 아래의 연락처로 부탁드립니다.</h6>
 				<i class="bi-phone fs-2 mb-3 text-muted"></i>
-				<div>010 - 0000 - 0000</div>
+				<div>010 - 5118 - 7511</div>
 			</div>
 		</div>
 	</div>
@@ -107,6 +107,9 @@
 </div>
 
 <%@ include file="../../layout/footer.jsp"%>
+<style>
+ .error {color : red;}
+</style>
 <script>
 console.log($('input[type="hidden"]').val())
 

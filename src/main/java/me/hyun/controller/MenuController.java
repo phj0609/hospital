@@ -74,7 +74,7 @@ public class MenuController {
 	// 멤버 - 예약확인리스트
 	@PreAuthorize("hasAnyRole('ROLE_MEMBER','ROLE_ADMIN')") 
 	@GetMapping("/check")
-	public String res_checkList(@AuthenticationPrincipal CustomUser user,Model model) {
+	public String res_checkList(@AuthenticationPrincipal CustomUser user, Model model) {
 		List<String> list = user.getAuthorities().
 				stream().map(v->v.getAuthority())
 						.collect(Collectors.toList());
@@ -86,8 +86,6 @@ public class MenuController {
 			// 그렇지 않을때 
 			model.addAttribute("list",resService.getList(user.getMember()));
 		}
-		
-		
 		return "menu/check";
 	}
 	

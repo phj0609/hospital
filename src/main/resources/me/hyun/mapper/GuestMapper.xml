@@ -29,5 +29,4 @@
 	<delete id="delete">
 		delete from guest_tbl where id=#{id}
 	</delete>
-
 </mapper>

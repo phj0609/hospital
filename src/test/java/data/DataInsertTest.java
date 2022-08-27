@@ -16,11 +16,10 @@ public class DataInsertTest extends AppTest {
 	public void insert() {
 		for (int i = 1; i <= 412; i++) {
 			Board vo = new Board();
-			vo.setTitle("제목 : 페이징 처리 연습하자" + i);
-			vo.setContent("내용 : 페이징 처리 하자" + i);
+			vo.setTitle("제목 : 게시판 제목" + i);
+			vo.setContent("내용 : 게시판 내용과 페이징처리" + i);
 			vo.setWriter("글쓴이" + i);
 			mapper.insert(vo);
 		}
 	}
-
 }

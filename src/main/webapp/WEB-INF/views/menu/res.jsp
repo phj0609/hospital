@@ -120,9 +120,7 @@ $(function(){
 
 	let agreeValue = 'agree';
 	$('input[name="agree"]').change(function(){
-		//console.log('체크!!')
 		agreeValue=$(this).data('agree');
-		//console.log(agreeValue);
 	})
 	
 	$("#contactForm button").on('click',function(e){
